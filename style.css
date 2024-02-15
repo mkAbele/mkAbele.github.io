@@ -1,7 +1,10 @@
 body{
+    font-family: "Press Start 2P", system-ui;
+    /*font-weight: 400;
+    font-style: normal;*/
     color: #000;
     background: #fff;
-    font-size: 16px;
+    font-size: 15px;
     margin: 0;
     padding: 0;
     font-weight: false;
@@ -41,7 +44,7 @@ small, .text-small {
 
 section{
     display: flex;
-    padding: 5em 10em;
+    padding: 5em 2em;
 }
 
 section.hero{
@@ -49,7 +52,7 @@ section.hero{
     align-items: center;
     justify-content: center;
     min-height: 80vh;
-    padding: 0em 10em;
+    padding: 2em 2em;
     border-bottom: 1px solid #000;
 }
 
@@ -63,7 +66,7 @@ section.work{
 }
 
 section.work .headline{
-    padding: 3em 10em;
+    padding: 2em 2em;
     border-bottom: 1px solid #000;
 }
 
@@ -127,3 +130,48 @@ section.work .swiper .scrollbar .swiper-scrollbar .swiper-scrollbar-drag{
     border-radius: 0;
 }
 
+/*Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    body{
+        font-size: 16px;
+    }
+
+    section{
+        display: flex;
+        padding: 5em 10em;
+    }
+
+    section.hero{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+        padding: 0em 10em;
+        border-bottom: 1px solid #000;
+    }
+
+    section.work .headline{
+        padding: 3em 10em;
+        border-bottom: 1px solid #000;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+
+}

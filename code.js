@@ -1,6 +1,6 @@
 const swiper = new Swiper('.swiper', {
     // Optional parameters
-    slidesPerView: 3.33,
+    slidesPerView: 1.33,
     direction: 'horizontal',
     loop: false,
 
@@ -13,4 +13,16 @@ const swiper = new Swiper('.swiper', {
     scrollbar: {
         el: '.swiper-scrollbar',
     },
+
+    breakpoints: {
+        640: {
+            slidesPerView: 1.8,
+        },
+        768: {
+            slidesPerView: 2.5,
+        },
+        1024: {
+            slidesPerView: 3.33,
+        },
+    }
 });
