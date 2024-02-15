@@ -15,12 +15,14 @@ p {
 h1, h2, h3, h4, h5 {
 font-weight: true;
 line-height: 1.15;
+margin: 0;
 }
 
 h1, .text-size-h1 {
     font-weight: 700;
     margin-top: 0;
     font-size: 4.21em;
+    margin-bottom: 0.7em;
 }
 
 h2, .text-size-h2 { font-size: 3.16em; }
@@ -39,7 +41,7 @@ small, .text-small {
 
 section{
     display: flex;
-    padding: 0 1em;
+    padding: 5em 10em;
 }
 
 section.hero{
@@ -47,4 +49,81 @@ section.hero{
     align-items: center;
     justify-content: center;
     min-height: 80vh;
+    padding: 0em 10em;
+    border-bottom: 1px solid #000;
 }
+
+section.about{
+    border-bottom: 1px solid #000;
+}
+
+section.work{
+    padding: 0 0;
+    flex-direction: column;
+}
+
+section.work .headline{
+    padding: 3em 10em;
+    border-bottom: 1px solid #000;
+}
+
+section.work .scrollbar{
+    padding: 2em;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+section.work .swiper {
+    width: 100%;
+    /*height: 600px;*/
+}
+
+section.work .swiper .swiper-wrapper{
+    height: 600px;
+}
+
+section.work .swiper .swiper-slide{
+    border-right: 1px solid #000;
+}
+
+section.work .swiper .swiper-slide a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    flex-direction: column;
+}
+
+section.work .swiper .swiper-slide a .image{
+    width: 100%;
+    aspect-ratio: 0.7;
+    background: black;
+}
+
+section.work .swiper .swiper-slide a .content{
+    height: 100%;
+    padding: 2em;
+}
+
+section.work .swiper .swiper-slide a .content p,
+section.work .swiper .swiper-slide a .content .date{
+    color: #000;
+    display: inline-block;
+    text-decoration:none !important;
+}
+
+section.work .swiper .scrollbar .swiper-scrollbar{
+    position: relative;
+    left: 0;
+    width: 100%;
+    bottom: unset;
+    border-radius: 0;
+    background: #0000000c;
+    height: 1px;
+}
+
+section.work .swiper .scrollbar .swiper-scrollbar .swiper-scrollbar-drag{
+    background: #000;
+    border-radius: 0;
+}
+
