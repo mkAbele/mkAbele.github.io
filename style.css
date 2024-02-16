@@ -1,3 +1,23 @@
+html.lenis {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
 body{
     font-family: "Press Start 2P", system-ui;
     /*font-weight: 400;
@@ -122,12 +142,29 @@ section.work .swiper .scrollbar .swiper-scrollbar{
     bottom: unset;
     border-radius: 0;
     background: #0000000c;
-    height: 1px;
+    border: 1px solid #000;
+    height: 16px;
 }
 
 section.work .swiper .scrollbar .swiper-scrollbar .swiper-scrollbar-drag{
-    background: #000;
+    background: #00000046;
     border-radius: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3px
+}
+
+section.work .swiper .scrollbar .swiper-scrollbar .swiper-scrollbar-drag span{
+    width: 1px;
+    background: #ffffff4d;
+    height: 12px;
+}
+
+section.work .swiper .scrollbar .swiper-scrollbar .swiper-scrollbar-drag span:last-of-type,
+section.work .swiper .scrollbar .swiper-scrollbar .swiper-scrollbar-drag span:first-of-type{
+    height: 10px;
 }
 
 /*Small devices (landscape phones, 576px and up) */
