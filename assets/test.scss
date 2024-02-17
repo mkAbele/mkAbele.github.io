@@ -1,0 +1,26 @@
+@import '../node_modules/locomotive-scroll/src/locomotive-scroll.scss';
+
+
+html {
+    scroll-behavior: initial;
+}
+
+html,
+body {
+  min-height: 100%;
+  height: auto;
+}
+
+body {
+    background:white;
+}
+
+.scroll1 {
+    min-height: 1000px;
+    background:blue;
+}
+
+.scroll2 {
+    min-height: 1000px;
+    background:blueviolet;
+}

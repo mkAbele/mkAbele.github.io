@@ -1,11 +1,11 @@
-
 import $, { removeData } from "jquery";
 import Swiper from 'swiper';
 import { Scrollbar } from 'swiper/modules';
-import Lenis from '@studio-freight/lenis'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+
+import LocomotiveScroll from 'locomotive-scroll';
 
 // wait until DOM is ready
 document.addEventListener("DOMContentLoaded", function(event){
@@ -16,22 +16,17 @@ document.addEventListener("DOMContentLoaded", function(event){
     window.addEventListener("load", function(e){
         
         //Load lenis
-        console.log(document.querySelector('body'))
-        const lenis = new Lenis();
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true
+        });
 
-        lenis.on('scroll', (e) => {
-            console.log(e)
-        })
-
-        function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        }
-
-        requestAnimationFrame(raf)
+        
+        $( ".c-scrollbar_thumb" ).append( "<span></span><span></span><span></span><span></span><span></span>" );
 
         //Load swiper js
         const swiper = new Swiper('.swiper', {
+            modules: [Scrollbar],
             // Optional parameters
             slidesPerView: 1.33,
             direction: 'horizontal',
@@ -63,22 +58,3 @@ document.addEventListener("DOMContentLoaded", function(event){
     }, false);
     
 });
-
-
-/** GSAP
- * const lenis = new Lenis()
-
-lenis.on('scroll', (e) => {
-  console.log(e)
-})
-
-lenis.on('scroll', ScrollTrigger.update)
-
-gsap.ticker.add((time)=>{
-  lenis.raf(time * 1000)
-})
-
-gsap.ticker.lagSmoothing(0)
- * 
- * 
- */
