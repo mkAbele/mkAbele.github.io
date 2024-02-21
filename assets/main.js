@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", function(event){
         });
 
         
-        $( ".c-scrollbar_thumb" ).append( "<span></span><span></span><span></span><span></span><span></span>" );
+        
+        // $( ".c-scrollbar_thumb" ).append( "<span></span><span></span><span></span><span></span><span></span>" );
 
         //Load swiper js
         const swiper = new Swiper('.swiper', {

@@ -36,6 +36,16 @@
     width: 10px;
 }
 
+html {
+    scroll-behavior: initial;
+}
+
+html,
+body {
+  min-height: 100%;
+  height: auto;
+}
+
 body{
     font-family: "Press Start 2P", system-ui;
     /*font-weight: 400;
@@ -78,6 +88,14 @@ h5, .text-size-h5 { font-size: 1.33em; }
 
 small, .text-small {
     font-size: 0.56em;
+}
+
+.wrapper{
+    width: 100%;
+}
+
+.headline{
+    width: 100%;
 }
 
 section{
@@ -186,6 +204,30 @@ section.work .swiper .scrollbar .swiper-scrollbar .swiper-scrollbar-drag span:fi
     height: 10px;
 }
 
+.contact{
+    flex-direction: column;
+}
+
+.contact .heading h1{
+    margin: 0px;
+}
+
+.contact .heading{
+    margin-bottom: 2em;
+}
+
+.contact .content .card{
+    margin-bottom: 1.25em;
+}
+
+.contact .content .card .title{
+    font-size: 2em;
+}
+
+.contact .content .card .card-content h3{
+    font-size: 1em;
+}
+
 /*Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 
@@ -230,4 +272,24 @@ section.work .swiper .scrollbar .swiper-scrollbar .swiper-scrollbar-drag span:fi
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
 
+}
+
+@media (max-width: 576px) {
+    .hero{
+        padding-right: 0.15em !important;
+        justify-content: flex-end !important;
+    }
+
+    .hero .headline h1{
+        font-size: 38px;
+        margin: 0;
+    }
+
+    .hero .headline h1:last-of-type{
+        margin-bottom: 1em;
+    }
+
+    .hero .content h3{
+        font-size: 15px;
+    }
 }
