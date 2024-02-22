@@ -911,6 +911,50 @@ small, .text-small {
   font-size: 0.56em;
 }
 
+.loadscreen {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1000;
+  background-color: blue;
+}
+
+.loadscreen .loadbar {
+  width: 70%;
+  height: 32px;
+  border: 2px solid greenyellow;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2px;
+}
+
+.loadscreen .loadbar .container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.loadscreen .loadbar .fill {
+  position: absolute;
+  width: 50%;
+  height: 32px;
+  background: greenyellow;
+}
+
+.loadscreen .counter {
+  font-size: 40px;
+  width: fit-content;
+  line-height: 100%;
+  position: absolute;
+  color: greenyellow;
+  z-index: 5;
+  right: 0;
+  bottom: 0;
+  margin: 2em;
+}
+
 .wrapper {
   width: 100%;
 }

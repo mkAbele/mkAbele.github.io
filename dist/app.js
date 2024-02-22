@@ -33983,7 +33983,11 @@ __webpack_require__.r(__webpack_exports__);
 
 gsap__WEBPACK_IMPORTED_MODULE_3__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_4__.ScrollTrigger);
 
+//import imagesLoaded from "imagesloaded";
 
+
+
+var loaderText = 
 
 // wait until DOM is ready
 document.addEventListener("DOMContentLoaded", function(event){
@@ -33992,8 +33996,19 @@ document.addEventListener("DOMContentLoaded", function(event){
     
     //wait until images, links, fonts, stylesheets, and js is loaded
     window.addEventListener("load", function(e){
-        
-        //Load lenis
+        let loadP = 0;
+
+        gsap__WEBPACK_IMPORTED_MODULE_3__.gsap.to(jquery__WEBPACK_IMPORTED_MODULE_0___default()(".loadscreen .loadbar .fill"),{
+            width: '100%',
+            duration: 1,
+            onUpdateParams:[jquery__WEBPACK_IMPORTED_MODULE_0___default()(this)],
+            onUpdate:function(tl){
+                //var tlp = tl.progress() * 100 >> 0;
+                //$(".loadscreen .counter").html(tlp+"%");
+                console.log(tl);
+            }
+        })
+
         const scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_5__["default"]({
             el: document.querySelector('[data-scroll-container]'),
             smooth: true
