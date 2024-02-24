@@ -101,7 +101,7 @@ small, .text-small {
 }
 
 .loadscreen .loadbar{
-    width: 70%;
+    width: 100%;
     height: 32px;
     border: 2px solid greenyellow;
     position: absolute;
@@ -119,7 +119,7 @@ small, .text-small {
 
 .loadscreen .loadbar .fill{
     position: absolute;
-    width: 50%;
+    // width: 50%;
     height: 32px;
     background: greenyellow;
 }
