@@ -1031,7 +1031,7 @@ a {
 section {
   position: relative;
   display: flex;
-  padding: 5em 2em;
+  padding: 10em 2em;
 }
 
 section.hero {
@@ -1188,18 +1188,18 @@ img.border {
   }
   section {
     display: flex;
-    padding: 5em 10em;
+    padding: 5em 20em;
   }
   section.hero {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 80vh;
-    padding: 0em 10em;
+    padding: 0em 20em;
     border-bottom: 1px solid #000;
   }
   section.work .headline {
-    padding: 3em 10em;
+    padding: 3em 20em;
     border-bottom: 1px solid #000;
   }
 }

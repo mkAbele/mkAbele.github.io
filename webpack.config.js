@@ -12,8 +12,7 @@ const entryPoints = {
   // you can have more than 1 entry point
   'app': jsPath + '/main.js',
   'style': cssPath + '/main.scss',
-  'test': jsPath + '/test.js',
-  'test_style': cssPath + '/test.scss'
+  'p5game': jsPath + '/p5game.js'
 };
 
 module.exports = {

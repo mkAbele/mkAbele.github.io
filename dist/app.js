@@ -34499,7 +34499,7 @@ document.addEventListener("DOMContentLoaded", function(event){
         //     }
         // })
 
-        const scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_6__["default"]({
+        const locoscroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_6__["default"]({
             el: document.querySelector('[data-scroll-container]'),
             smooth: true
         });
