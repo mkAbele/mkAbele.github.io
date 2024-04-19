@@ -202,6 +202,35 @@ a{
     margin: 2em;
 }
 
+/* Fun stuff with a tv */
+.tv-container{
+    width: 250px;
+    height: 200px;
+    position: absolute;
+}
+
+.tv-container .mask{
+    background: greenyellow;
+    width: 66%;
+    height: 57%;
+    // margin-left: 2%;
+    margin-left: 10%;
+    margin-top: 9%;
+    position: absolute;
+    z-index: 3;
+}
+
+.tv-container .tv{
+    width: 100%;
+    height: 100%;
+    background-image: url(/assets/images/TV.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 5;
+}
 
 .wrapper{
     width: 100%;

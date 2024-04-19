@@ -107,3 +107,15 @@ document.addEventListener("DOMContentLoaded", function(event){
     }, false);
     
 });
+
+
+/** art */
+function setup(){
+    let canvas = createCanvas(200, 200);
+    canvas.parent('p5-1');
+    background(50);
+}
+
+function draw(){
+circle(mouseX, mouseY, 50);
+}
