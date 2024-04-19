@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Custom FPS Controls in A-Frame</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin: mouse">
+      <!-- Player entity -->
+      <a-entity id="player" position="0 1.6 0" camera look-controls></a-entity>
+
+      <!-- Ground plane -->
+      <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#777"></a-plane>
+
+      <!-- Keyboard controls -->
+      <script>
+        document.addEventListener('keydown', function(event) {
+          var player = document.querySelector('#player');
+          var rotation = player.getAttribute('rotation');
+          var position = player.getAttribute('position');
+
+          // Movement speed
+          var speed = 0.1;
+
+          switch(event.key) {
+            case 'w': // Forward
+              position.z -= Math.cos(rotation.y * Math.PI / 180) * speed;
+              position.x -= Math.sin(rotation.y * Math.PI / 180) * speed;
+              break;
+            case 's': // Backward
+              position.z += Math.cos(rotation.y * Math.PI / 180) * speed;
+              position.x += Math.sin(rotation.y * Math.PI / 180) * speed;
+              break;
+            case 'a': // Left
+              position.x += Math.cos(rotation.y * Math.PI / 180) * speed;
+              position.z -= Math.sin(rotation.y * Math.PI / 180) * speed;
+              break;
+            case 'd': // Right
+              position.x -= Math.cos(rotation.y * Math.PI / 180) * speed;
+              position.z += Math.sin(rotation.y * Math.PI / 180) * speed;
+              break;
+          }
+
+          player.setAttribute('position', position);
+        });
+        
+        document.addEventListener('mousemove', function(event) {
+          var player = document.querySelector('#player');
+          var rotation = player.getAttribute('rotation');
+
+          // Look sensitivity
+          var sensitivity = 0.1;
+
+          // Update look rotation based on mouse movement
+          rotation.y -= event.movementX * sensitivity;
+          rotation.x -= event.movementY * sensitivity;
+
+          // Clamp vertical look rotation to avoid flipping upside down
+          rotation.x = Math.max(-90, Math.min(90, rotation.x));
+
+          player.setAttribute('rotation', rotation);
+        });
+      </script>
+    </a-scene>
+  </body>
+</html>
