@@ -1,6 +1,7 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="/aframe-environment-component.js"></script>
 
     <script>
         AFRAME.registerComponent('character-controller', {
@@ -62,14 +63,37 @@
   <body>
     <a-scene vr-mode-ui="enabled: false">
 
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+        <a-assets>
+            <!-- Loads terrain object-->
+            <a-asset-item id="terrain-obj" src="/assets/maps/liepaja/trueMT_terrain.obj"></a-asset-item>
+            <a-asset-item id="terrain-mtl" src="/assets/maps/liepaja/trueMT_terrain.mtl"></a-asset-item>
+
+            <!-- Loads debug buildings -->
+            <a-asset-item id="dbgBuildings-obj" src="/assets/maps/liepaja/trueMT_debugBuildings.obj"></a-asset-item>
+            <a-asset-item id="dbgBuildings-mtl" src="/assets/maps/liepaja/trueMT_debugBuildings.mtl"></a-asset-item>
+        </a-assets>
+
+        <!-- Terrain -->
+        <a-entity id="terrain" obj-model="obj: #terrain-obj; mtl: #terrain-mtl" position="0 -7 0"></a-entity>
+
+        <!-- Buildings -->
+        <a-entity id="debug-buildings" obj-model="obj: #dbgBuildings-obj; mtl: #dbgBuildings-mtl" position="0 -7 0"></a-entity>
+
+        <!-- Scale object -->
+        <a-box id="scaleObject" position="0 0.5 0" color="#F0F0F0"></a-box>
+
+        <!-- Test objects -->
+        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-box position="0 0 -4" rotation="-90 0 0" width="4" height="4" depth="0.1" color="#7BC8A4"></a-box>
+
+        <!-- Sky box -->
+        <!-- <a-sky color="#ECECEC"></a-sky> -->
+        <a-entity environment><a-entity>
 
         <!-- First-person camera with look-controls -->
-        <a-entity id="cameraRig"  position="0 1.6 0" character-controller>
+        <a-entity id="cameraRig"  position="166.869 1.6 93.191" character-controller>
             <!-- Character model -->
             <a-entity id="character" position="0 -1 0">
                 <!-- Add your character model here -->
