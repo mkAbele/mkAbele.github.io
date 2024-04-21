@@ -42,7 +42,7 @@
                 // }
 
                 // this.tickDelay += 1;
-                console.log(this.cameraEl.getAttribute('position'))
+                // console.log(this.cameraEl.getAttribute('position'))
 
                 //Update rotation for the character
                 this.characterEl.setAttribute('rotation',{
@@ -65,19 +65,19 @@
 
         <a-assets>
             <!-- Loads terrain object-->
-            <a-asset-item id="terrain-obj" src="/assets/maps/liepaja/trueMT_terrain.obj"></a-asset-item>
-            <a-asset-item id="terrain-mtl" src="/assets/maps/liepaja/trueMT_terrain.mtl"></a-asset-item>
+            <a-asset-item id="terrain-obj" src="/assets/maps/met-newtown/Terrain_mtnewtown_dbg.obj"></a-asset-item>
+            <a-asset-item id="terrain-mtl" src="/assets/maps/met-newtown/Terrain_mtnewtown_dbg.mtl"></a-asset-item>
 
             <!-- Loads debug buildings -->
-            <a-asset-item id="dbgBuildings-obj" src="/assets/maps/liepaja/trueMT_debugBuildings.obj"></a-asset-item>
-            <a-asset-item id="dbgBuildings-mtl" src="/assets/maps/liepaja/trueMT_debugBuildings.mtl"></a-asset-item>
+            <a-asset-item id="dbgBuildings-obj" src="/assets/maps/met-newtown/buildings_mtnewtown_dbg.obj"></a-asset-item>
+            <a-asset-item id="dbgBuildings-mtl" src="/assets/maps/met-newtown/buildings_mtnewtown_dbg.mtl"></a-asset-item>
         </a-assets>
 
         <!-- Terrain -->
-        <a-entity id="terrain" obj-model="obj: #terrain-obj; mtl: #terrain-mtl" position="0 -7 0"></a-entity>
+        <a-entity id="terrain" obj-model="obj: #terrain-obj; mtl: #terrain-mtl" position="0 -18 0"></a-entity>
 
         <!-- Buildings -->
-        <a-entity id="debug-buildings" obj-model="obj: #dbgBuildings-obj; mtl: #dbgBuildings-mtl" position="0 -7 0"></a-entity>
+        <a-entity id="debug-buildings" obj-model="obj: #dbgBuildings-obj; mtl: #dbgBuildings-mtl" position="0 -18 0"></a-entity>
 
         <!-- Scale object -->
         <a-box id="scaleObject" position="0 0.5 0" color="#F0F0F0"></a-box>
@@ -90,18 +90,20 @@
 
         <!-- Sky box -->
         <!-- <a-sky color="#ECECEC"></a-sky> -->
-        <a-entity environment><a-entity>
+        <a-entity environment="playArea: 10;"><a-entity>
 
-        <!-- First-person camera with look-controls -->
-        <a-entity id="cameraRig"  position="166.869 1.6 93.191" character-controller>
-            <!-- Character model -->
-            <a-entity id="character" position="0 -1 0">
-                <!-- Add your character model here -->
-                <a-box width="0.5" height="1" depth="0.5" color="blue"></a-box>
+            <!-- First-person camera with look-controls -->
+            <a-entity id="cameraRig"  position="166.869 1.6 93.191" character-controller>
+                <!-- Character model -->
+                <a-entity id="character" position="0 -1 0">
+                    <!-- Add your character model here -->
+                    <a-box width="0.5" height="1" depth="0.5" color="blue"></a-box>
+                </a-entity>
+                <!-- Camera -->
+                <a-entity id="camera" camera look-controls="pointerLockEnabled: true" wasd-controls=""></a-entity>
             </a-entity>
-            <!-- Camera -->
-            <a-entity id="camera" camera look-controls="pointerLockEnabled: true" wasd-controls=""></a-entity>
-        </a-entity>
+
+
     </a-scene>
   </body>
 </html>

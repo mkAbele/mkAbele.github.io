@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="/aframe-environment-component.js"></script>
+
+    <script>
+        AFRAME.registerComponent('character-controller', {
+            
+
+            init: function () {
+                // Get references to camera and character entities
+                this.cameraEl = document.querySelector('#camera');
+                this.characterEl = document.querySelector('#character');
+                this.characterOffset = this.characterEl.getAttribute('position')
+                
+                console.log(this.el)
+                console.log(this.characterEl.getAttribute('position'))
+                // this.tickDelay = 0;
+
+                // Listen for changes in camera rotation
+                // cameraEl.addEventListener('rotationChanged', function () {
+                //     // Update character rotation to match camera rotation along the y-axis
+                //     characterEl.setAttribute('rotation', {
+                //         x: 0,
+                //         y: cameraEl.getAttribute('rotation').y,
+                //         z: 0
+                //     });
+                // });
+            },
+            tick: function (time, timeDelta) {
+                // if (this.tickDelay > 15){
+                //     // console.log(this.cameraEl.getAttribute('rotation').y)
+                //     this.characterEl.setAttribute('rotation',{
+                //         x: 0,
+                //         z: 0,
+                //         y: this.cameraEl.getAttribute('rotation').y
+                //     });
+
+                    
+
+                //     this.tickDelay = 0;
+                // }
+
+                // this.tickDelay += 1;
+                console.log(this.cameraEl.getAttribute('position'))
+
+                //Update rotation for the character
+                this.characterEl.setAttribute('rotation',{
+                    y: this.cameraEl.getAttribute('rotation').y
+                });
+
+                //Update position for the cgharacter
+                this.characterEl.setAttribute('position', {
+                    x: this.cameraEl.getAttribute('position').x,
+                    y: this.cameraEl.getAttribute('position').y - 1,
+                    z: this.cameraEl.getAttribute('position').z
+                });
+
+            }
+        });
+    </script>
+  </head>
+  <body>
+    <a-scene vr-mode-ui="enabled: false">
+
+        <a-assets>
+            <!-- Loads terrain object-->
+            <a-asset-item id="terrain-obj" src="/assets/maps/liepaja/trueMT_terrain.obj"></a-asset-item>
+            <a-asset-item id="terrain-mtl" src="/assets/maps/liepaja/trueMT_terrain.mtl"></a-asset-item>
+
+            <!-- Loads debug buildings -->
+            <a-asset-item id="dbgBuildings-obj" src="/assets/maps/liepaja/trueMT_debugBuildings.obj"></a-asset-item>
+            <a-asset-item id="dbgBuildings-mtl" src="/assets/maps/liepaja/trueMT_debugBuildings.mtl"></a-asset-item>
+        </a-assets>
+
+        <!-- Terrain -->
+        <a-entity id="terrain" obj-model="obj: #terrain-obj; mtl: #terrain-mtl" position="0 -7 0"></a-entity>
+
+        <!-- Buildings -->
+        <a-entity id="debug-buildings" obj-model="obj: #dbgBuildings-obj; mtl: #dbgBuildings-mtl" position="0 -7 0"></a-entity>
+
+        <!-- Scale object -->
+        <a-box id="scaleObject" position="0 0.5 0" color="#F0F0F0"></a-box>
+
+        <!-- Test objects -->
+        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-box position="0 0 -4" rotation="-90 0 0" width="4" height="4" depth="0.1" color="#7BC8A4"></a-box>
+
+        <!-- Sky box -->
+        <!-- <a-sky color="#ECECEC"></a-sky> -->
+        <a-entity environment><a-entity>
+
+        <!-- First-person camera with look-controls -->
+        <a-entity id="cameraRig"  position="166.869 1.6 93.191" character-controller>
+            <!-- Character model -->
+            <a-entity id="character" position="0 -1 0">
+                <!-- Add your character model here -->
+                <a-box width="0.5" height="1" depth="0.5" color="blue"></a-box>
+            </a-entity>
+            <!-- Camera -->
+            <a-entity id="camera" camera look-controls="pointerLockEnabled: true" wasd-controls=""></a-entity>
+        </a-entity>
+    </a-scene>
+  </body>
+</html>
