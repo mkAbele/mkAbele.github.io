@@ -1,76 +1,27 @@
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="/aframe-environment-component.js"></script>
+    
 
-    <script>
-        AFRAME.registerComponent('character-controller', {
-            
+    <!-- <script src="../ammo.wasm.js"></script> -->
+    <script src="../aframe-v1.5.0.js"></script>
+    <script src="../aframe-environment-component.js"></script>
+    <!-- <script src="../aframe-physics-system.js"></script> -->
 
-            init: function () {
-                // Get references to camera and character entities
-                this.cameraEl = document.querySelector('#camera');
-                this.characterEl = document.querySelector('#character');
-                this.characterOffset = this.characterEl.getAttribute('position')
-                
-                console.log(this.el)
-                console.log(this.characterEl.getAttribute('position'))
-                // this.tickDelay = 0;
-
-                // Listen for changes in camera rotation
-                // cameraEl.addEventListener('rotationChanged', function () {
-                //     // Update character rotation to match camera rotation along the y-axis
-                //     characterEl.setAttribute('rotation', {
-                //         x: 0,
-                //         y: cameraEl.getAttribute('rotation').y,
-                //         z: 0
-                //     });
-                // });
-            },
-            tick: function (time, timeDelta) {
-                // if (this.tickDelay > 15){
-                //     // console.log(this.cameraEl.getAttribute('rotation').y)
-                //     this.characterEl.setAttribute('rotation',{
-                //         x: 0,
-                //         z: 0,
-                //         y: this.cameraEl.getAttribute('rotation').y
-                //     });
-
-                    
-
-                //     this.tickDelay = 0;
-                // }
-
-                // this.tickDelay += 1;
-                // console.log(this.cameraEl.getAttribute('position'))
-
-                //Update rotation for the character
-                this.characterEl.setAttribute('rotation',{
-                    y: this.cameraEl.getAttribute('rotation').y
-                });
-
-                //Update position for the cgharacter
-                this.characterEl.setAttribute('position', {
-                    x: this.cameraEl.getAttribute('position').x,
-                    y: this.cameraEl.getAttribute('position').y - 1,
-                    z: this.cameraEl.getAttribute('position').z
-                });
-
-            }
-        });
-    </script>
+    <script src="../character-controller.js"></script>
   </head>
   <body>
     <a-scene vr-mode-ui="enabled: false">
 
         <a-assets>
+            <img id="sky" src="../assets/maps/textures/hdr/partly_cloudy_puresky_2k.hdr">
+
             <!-- Loads terrain object-->
-            <a-asset-item id="terrain-obj" src="/assets/maps/met-newtown/Terrain_mtnewtown_dbg.obj"></a-asset-item>
-            <a-asset-item id="terrain-mtl" src="/assets/maps/met-newtown/Terrain_mtnewtown_dbg.mtl"></a-asset-item>
+            <a-asset-item id="terrain-obj" src="../assets/maps/met-newtown/Terrain_mtnewtown_dbg.obj"></a-asset-item>
+            <a-asset-item id="terrain-mtl" src="../assets/maps/met-newtown/Terrain_mtnewtown_dbg.mtl"></a-asset-item>
 
             <!-- Loads debug buildings -->
-            <a-asset-item id="dbgBuildings-obj" src="/assets/maps/met-newtown/buildings_mtnewtown_dbg.obj"></a-asset-item>
-            <a-asset-item id="dbgBuildings-mtl" src="/assets/maps/met-newtown/buildings_mtnewtown_dbg.mtl"></a-asset-item>
+            <a-asset-item id="dbgBuildings-obj" src="../assets/maps/met-newtown/buildings_mtnewtown_dbg.obj"></a-asset-item>
+            <a-asset-item id="dbgBuildings-mtl" src="../assets/maps/met-newtown/buildings_mtnewtown_dbg.mtl"></a-asset-item>
         </a-assets>
 
         <!-- Terrain -->
@@ -89,19 +40,20 @@
         <a-box position="0 0 -4" rotation="-90 0 0" width="4" height="4" depth="0.1" color="#7BC8A4"></a-box>
 
         <!-- Sky box -->
-        <!-- <a-sky color="#ECECEC"></a-sky> -->
-        <a-entity environment="playArea: 10;"><a-entity>
+        <!-- <a-sky id="#sky"></a-sky> -->
+        <!-- <a-entity environment="playArea: 10;"><a-entity> -->
+        <a-entity environment="preset: arches" preset-switcher="" id="environment"></a-entity>
 
-            <!-- First-person camera with look-controls -->
-            <a-entity id="cameraRig"  position="166.869 1.6 93.191" character-controller>
-                <!-- Character model -->
-                <a-entity id="character" position="0 -1 0">
-                    <!-- Add your character model here -->
-                    <a-box width="0.5" height="1" depth="0.5" color="blue"></a-box>
-                </a-entity>
-                <!-- Camera -->
-                <a-entity id="camera" camera look-controls="pointerLockEnabled: true" wasd-controls=""></a-entity>
+        <!-- First-person camera with look-controls -->
+        <a-entity id="cameraRig"  position="600 1.6 -600" character-controller>
+            <!-- Character model -->
+            <a-entity id="character" position="0 -1 0" collider-check raycaster="showLine:true;">
+                <!-- Add your character model here -->
+                <a-box width="0.5" height="1" depth="0.5" color="blue" visible="false"></a-box>
             </a-entity>
+            <!-- Camera -->
+            <a-entity id="camera" camera look-controls="pointerLockEnabled: true" wasd-controls=""></a-entity>
+        </a-entity>
 
 
     </a-scene>

@@ -120,7 +120,7 @@
 	    this.environmentData = {};
 
 	    // stage ground diameter (and sky radius)
-	    this.STAGE_SIZE = 200;
+	    this.STAGE_SIZE = 1250;
 
 	    // data for dressing meshes
 	    this.assets = {
