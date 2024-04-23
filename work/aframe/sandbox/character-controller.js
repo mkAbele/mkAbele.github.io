@@ -12,8 +12,8 @@ AFRAME.registerComponent('character-controller', {
         this.playerHeight = this.el.getAttribute('position').y;
         
         
-        // // console.log(this.el)
-        // // console.log(this.characterEl.getAttribute('position'))
+        // console.log(this.el)
+        // console.log(this.characterEl.getAttribute('position'))
 
         window.addEventListener('keydown', function (event) {
             if (event.keyCode === 32) {
@@ -39,23 +39,7 @@ AFRAME.registerComponent('character-controller', {
             z: this.cameraEl.getAttribute('position').z
         });
 
-        // Check collision with ground using raycaster
-        var raycasterEl = this.characterEl.components.raycaster;
-        // console.log(raycasterEl)
 
-        if (raycasterEl && raycasterEl.intersectedEls.length > 0) {
-            var intersectedEl = raycasterEl.intersectedEls[0];
-            console.log(intersectedEl)
-            var intersectedPosition = intersectedEl.getAttribute('position');
-            var characterPosition = this.characterEl.getAttribute('position');
-
-            if (intersectedPosition.y > characterPosition.y) {
-                characterPosition.y = intersectedPosition.y;
-                this.characterEl.setAttribute('position', characterPosition);
-            }
-        }
-
-        
     },
 
     jump: function () {

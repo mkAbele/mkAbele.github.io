@@ -1,19 +1,26 @@
 <html>
   <head>
     
+    <!-- <script src="/ammo.js"></script>
+    <script src="/ammo.wasm.js"></script> -->
 
-    <!-- <script src="../ammo.wasm.js"></script> -->
-    <script src="../aframe-v1.5.0.js"></script>
-    <script src="../aframe-environment-component.js"></script>
-    <!-- <script src="../aframe-physics-system.js"></script> -->
+    <script src="/aframe-v1.5.0.js"></script>
 
-    <script src="../character-controller.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
+    <script src="/aframe-physics-system.copy.js"></script>
+    <!-- <script src="/aframe-environment-component.js"></script> -->
+
+    <!-- <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script> -->
+
+    <script src="/character-controller.js"></script>=
+
   </head>
   <body>
-    <a-scene vr-mode-ui="enabled: false">
+    <a-scene stats vr-mode-ui="enabled: false" physics=" driver: ammo; debug: true; ">
 
         <a-assets>
-            <img id="sky" src="../assets/maps/textures/hdr/partly_cloudy_puresky_2k.hdr">
 
             <!-- Loads terrain object-->
             <a-asset-item id="terrain-obj" src="../assets/maps/met-newtown/Terrain_mtnewtown_dbg.obj"></a-asset-item>
@@ -25,15 +32,17 @@
         </a-assets>
 
         <!-- Terrain -->
-        <a-entity id="terrain" obj-model="obj: #terrain-obj; mtl: #terrain-mtl" position="0 -18 0"></a-entity>
+        <a-entity ammo-body="type: static; mass: 0;" ammo-shape="type: mesh;" id="terrain" obj-model="obj: #terrain-obj; mtl: #terrain-mtl" position="0 -18 0"></a-entity>
 
         <!-- Buildings -->
-        <a-entity id="debug-buildings" obj-model="obj: #dbgBuildings-obj; mtl: #dbgBuildings-mtl" position="0 -18 0"></a-entity>
+        <a-entity ammo-body="type: static; mass: 0;" ammo-shape="type: mesh;" id="debug-buildings" obj-model="obj: #dbgBuildings-obj; mtl: #dbgBuildings-mtl" position="0 -18 0"></a-entity>
 
         <!-- Scale object -->
         <a-box id="scaleObject" position="0 0.5 0" color="#F0F0F0"></a-box>
 
         <!-- Test objects -->
+        <a-box ammo-body ammo-shape="type: box;" position="605 2.5 -605" rotation="0 45 0" color="#4CC3D9"></a-box>
+
         <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
         <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
         <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
@@ -45,11 +54,11 @@
         <a-entity environment="preset: arches" preset-switcher="" id="environment"></a-entity>
 
         <!-- First-person camera with look-controls -->
-        <a-entity id="cameraRig"  position="600 1.6 -600" character-controller>
+        <a-entity id="cameraRig"  position="600 1.6 -600" rotation="0 -35 0" character-controller>
             <!-- Character model -->
-            <a-entity id="character" position="0 -1 0" collider-check raycaster="showLine:true;">
+            <a-entity id="character" position="0 -1 0">
                 <!-- Add your character model here -->
-                <a-box width="0.5" height="1" depth="0.5" color="blue" visible="false"></a-box>
+                <a-box width="0.5" height="1" depth="0.5" color="blue" visible="false" ammo-body="type: static; mass: 0;" ammo-shape="type: box;"></a-box>
             </a-entity>
             <!-- Camera -->
             <a-entity id="camera" camera look-controls="pointerLockEnabled: true" wasd-controls=""></a-entity>
