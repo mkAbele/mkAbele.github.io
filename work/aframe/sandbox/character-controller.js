@@ -1,5 +1,6 @@
+document.querySelector("[camera]").addEventListener("collide", function(e) {console.log("Test hit")});
+
 AFRAME.registerComponent('character-controller', {
-            
 
     init: function () {
         var self = this;
@@ -8,6 +9,8 @@ AFRAME.registerComponent('character-controller', {
         this.cameraEl = document.querySelector('#camera');
         this.characterEl = document.querySelector('#character');
         this.characterOffset = this.characterEl.getAttribute('position')
+        
+        this.tickCount = 0;
 
         this.playerHeight = this.el.getAttribute('position').y;
         
@@ -21,11 +24,33 @@ AFRAME.registerComponent('character-controller', {
                 self.jump();
             }
         });
+
+        console.log(this.el.querySelector('#character #fps-body'))
+        this.el.querySelector('#character #fps-body').addEventListener('collide', function(e) {
+            console.log('Player has collided with ', e.detail.body.el);
+        });
+
+        document.querySelector("[camera]").addEventListener("collide", function(e) {console.log("Test hit")});
         
         
     },
 
     tick: function (time, timeDelta) {
+        this.tickCount = 0;
+        if(this.tickCount >= 60){
+            this.tickCount = 0;
+            console.log(AFRAME.scenes[0].systems.physics.driver.collisions)
+        }
+        
+        
+        
+        this.tickCount += 1;
+
+        var playerEl = document.querySelector("#character");
+        playerEl.addEventListener("collide", function(e) {
+            console.log("Player has collided with body #" + e.detail.targetEl.id);
+            e.detail.targetEl; // Other entity, which playerEl touched.
+        });
 
         //Update rotation for the character
         this.characterEl.setAttribute('rotation',{
@@ -56,4 +81,15 @@ AFRAME.registerComponent('character-controller', {
     }
 
     
+});
+
+AFRAME.registerComponent('character-physics', {
+    init: function () {
+        
+        this.el.addEventListener('collide', function(e) {
+            console.log('Player has collided with ', e.detail.body.el);
+        });
+        
+        
+    }
 });
