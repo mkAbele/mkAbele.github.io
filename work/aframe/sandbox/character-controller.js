@@ -1,4 +1,4 @@
-document.querySelector("[camera]").addEventListener("collide", function(e) {console.log("Test hit")});
+// document.querySelector("[camera]").addEventListener("collide", function(e) {console.log("Test hit")});
 
 AFRAME.registerComponent('character-controller', {
 
@@ -25,10 +25,10 @@ AFRAME.registerComponent('character-controller', {
             }
         });
 
-        console.log(this.el.querySelector('#character #fps-body'))
-        this.el.querySelector('#character #fps-body').addEventListener('collide', function(e) {
-            console.log('Player has collided with ', e.detail.body.el);
-        });
+        // console.log(this.el.querySelector('#character #fps-body'))
+        // this.el.querySelector('#character #fps-body').addEventListener('collide', function(e) {
+        //     console.log('Player has collided with ', e.detail.body.el);
+        // });
 
         document.querySelector("[camera]").addEventListener("collide", function(e) {console.log("Test hit")});
         
@@ -36,21 +36,21 @@ AFRAME.registerComponent('character-controller', {
     },
 
     tick: function (time, timeDelta) {
-        this.tickCount = 0;
+        // this.tickCount = 0;
         if(this.tickCount >= 60){
             this.tickCount = 0;
-            console.log(AFRAME.scenes[0].systems.physics.driver.collisions)
+            // console.log(AFRAME.scenes[0].systems.physics.driver.collisions)
         }
         
         
         
         this.tickCount += 1;
 
-        var playerEl = document.querySelector("#character");
-        playerEl.addEventListener("collide", function(e) {
-            console.log("Player has collided with body #" + e.detail.targetEl.id);
-            e.detail.targetEl; // Other entity, which playerEl touched.
-        });
+        // var playerEl = document.querySelector("#character");
+        // playerEl.addEventListener("collide", function(e) {
+        //     console.log("Player has collided with body #" + e.detail.targetEl.id);
+        //     e.detail.targetEl; // Other entity, which playerEl touched.
+        // });
 
         //Update rotation for the character
         this.characterEl.setAttribute('rotation',{
@@ -83,7 +83,7 @@ AFRAME.registerComponent('character-controller', {
     
 });
 
-AFRAME.registerComponent('character-physics', {
+AFRAME.registerComponent('collider-check', {
     init: function () {
         
         this.el.addEventListener('collide', function(e) {
@@ -92,4 +92,6 @@ AFRAME.registerComponent('character-physics', {
         
         
     }
+
+    
 });
