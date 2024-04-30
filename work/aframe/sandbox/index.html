@@ -10,7 +10,7 @@
     <script src="./aframe-extras.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/MozillaReality/ammo.js@8bbc0ea/builds/ammo.wasm.js"></script>
     <script src="./aframe-physics-system.copy.js"></script>
-    <!-- s<script src="./aframe-environment-component.js"></script> -->
+    <script src="./aframe-environment-component.js"></script>
 
     <!-- <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script> -->
@@ -20,6 +20,7 @@
   </head>
   <body>
     <a-scene stats obb-collider="showColliders: true" vr-mode-ui="enabled: false" physics=" driver: ammo; debug: true; stats:panel;">
+    <!-- <a-scene vr-mode-ui="enabled: false" physics=" driver: ammo;"> -->
 
         <a-assets>
 
@@ -45,7 +46,7 @@
         <a-sphere data-raycastable position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
         <a-cylinder data-raycastable ammo-body="type: static; mass: 0;" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
         <a-box data-raycastable ammo-body="type: static; mass: 0;" position="0 0 -4" rotation="-90 0 0" width="4" height="4" depth="0.1" color="#7BC8A4"></a-box>
-        <a-box data-raycastable ammo-body id="boxy" ammo-shape="type: box;" id="scaleObject" position="2 0.5 0" color="#F0F0F0"></a-box>
+        <a-box data-raycastable ammo-body id="boxy" ammo-shape="type: box;" id="scaleObject" position="630 0.5 -595" color="#F0F0F0"></a-box>
 
         <!-- Sky box -->
         <!-- <a-sky id="#sky"></a-sky> -->
@@ -54,8 +55,8 @@
 
         <!-- First-person camera with look-controls -->
         <!-- <a-entity id="cameraRig"  position="600 1.6 -600" rotation="0 -35 0" character-controller></a-entity> -->
-
-        <a-entity id="cameraRig" movement-controls character-controller>
+        <!-- -->
+        <a-entity id="cameraRig" position="636.4 -2.3 -597.7" movement-controls character-controller>
             <!-- Character model -->
             <a-entity id="character" position="0 0 0">
                 <!-- Add your character model here visible="false" obb-collider -->

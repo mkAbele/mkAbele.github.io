@@ -91,6 +91,12 @@ AFRAME.registerComponent('collider-check', {
         });
         
         
+    },
+
+    tick: function(){
+        this.el.addEventListener('collide', function(e) {
+            console.log('Player has collided with ', e.detail.body.el);
+        });
     }
 
     
