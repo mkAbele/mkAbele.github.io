@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>Mark's portfolio 🛰️ - Gif series</title>
+        <link rel="stylesheet" href="/dist/style.css">
+        <!-- <link rel="stylesheet" href="classroom.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+    </head>
+    <body>
+        <div class="vm-tv-screen-effect"></div>
+        <div class="loadscreen">
+        <div class="loadbar">
+            <div class="container"><div class="fill"></div></div>
+        </div>
+        <div class="counter"></div>
+        </div>
+        <div class="nav"><a href="/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 15V17H3V19H4V20H5V21H7V22H9V23H15V22H17V21H19V20H20V19H21V17H22V15H23V9H22V7H21V5H20V4H19V3H17V2H15V1H9V2H7V3H5V4H4V5H3V7H2V9H1V15H2ZM3 9H4V7H5V5H7V4H9V3H15V4H17V5H19V7H20V9H21V15H20V17H19V19H17V20H15V21H9V20H7V19H5V17H4V15H3V9Z" fill="black"/>
+            <path d="M7 13V11H8V10H9V9H10V8H11V7H12V11H18V13H12V17H11V16H10V15H9V14H8V13H7Z" fill="black"/>
+            </svg></a></div>
+        <div class="wrapper" data-scroll-container>
+            <section class="blog">
+                <div class="title">
+                    <h1>An F1N <br>Giff series</h1>
+                    <h2>Inspired by haydiroket</h2>
+                    <img class="border" src="/assets/images/haydiroket_avatar.jpg" style="
+                        position: absolute;
+                        z-index: -1;
+                        top: 0;
+                        right: 0;
+                        transform: rotate(15deg);"/>
+                </div>
+                <div class="content">
+                    <p>
+                        This is my attemt on createing a gif series that ir hevely inspired by the style of haydiroket. I love the "old", jet classic interet look and feel of his work.
+                    </p>
+                    <div class="asset center-item">
+                        <img src="https://64.media.tumblr.com/7b21782faad4e2ee8614949c29e5d727/3985f4a1c4521b5e-f3/s500x750/bce7b9298c4b46db265310060d3e3a73796abb03.gifv" height="500" width="500" alt="#haydiroket from TOTALLY RAD">    
+                        <p class="annotation">Unnamed by haydiroket</p>
+                    </div>
+                    <p>
+                        For example this peace is a 3D animated render that is gone thru some sort of post processing, that i like and this gives the gif a retro / 1986 vibe to it. <br> 
+                        If you know something about computer history, way back before operateing systems were text based and the only way to display images were with text. Specifily ascii text.
+                    </p>
+                    <div class="asset center-item">
+                        <img class="J9AiF" src="https://64.media.tumblr.com/6067c17608b2dd32bc06216873461e35/tumblr_n5v911lIbe1qzgjfco1_r3_500.gifv" height="500" width="500" alt="#haydiroket from TOTALLY RAD">
+                        <p class="annotation">Unnamed by haydiroket</p>
+                    </div>
+                    <p>
+                        For example i like the estetic of this peace, because it gives me this warm fealing of my childhood. Playing DOOM on a windows 95 pc. This estetic is something i would love to mix with ASCII post porcessing.<br>
+                        But i guess enaugh chity chat, lets get to work.
+                    </p>
+                    <br><br>
+                    <h1>Let's get to work</h1>
+                    <p>
+                        I alread did know that this type of work will require some expertese in codeing to get finetunable results, but i didnt know that that will take that much time for me.<br>
+                        So i started researching. Where will i find old windows 95 icons? I could install and fresh install of windows 95 on a virtual machine, or what not, but i actaly found a great tumblr that has just that.<br>
+                        Here the link for you to enyoy. <br><br>
+                        <!-- https://oldwindowsicons.tumblr.com/ -->
+                    </p>
+                    <p>
+                        Ok, now that i have my icon set. I need to create some content i had this idea of makeing fun of learning processies in univerities, highscools, e.t.c.<br>
+                        We all know that learning processies sometimes might feal frustrateing when you know i have finals comeing. For example you have to create new art for percivable no reason just to put it in a trash bin later.<br>
+                        So i came up with a quick trashy gif/animation about just that.
+                    </p><br><br>
+                    <div class="asset center-item">
+                        <video width="500" height="500" loop autoplay >
+                            <source src="/assets/images/C1_A.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video> 
+                        <p class="annotation">Frustate by Marks</p>
+                    </div>
+                    <p>
+                        Ok, I don't think that this is very inpactfull content wise and it didnt take much time to create. But the biggest hastle is yet to come.<br>
+                        Now that i have my first gif in the half of the estetic i would like to repreduce, i needed to figure out how i would recreate this in ASCII characters.<br>
+                        At first i tried some tools i found in the internet, but those gave me bad results. You could figure out whats depicted in the animation. So i started to read and read and read and ....<br>
+                    </p><br><br>
+                    <h1>The python's nest</h1>
+                    <p>
+                        So i know i needed to disasamble my source animation (it didnt matter if its a gif or an mp4) into multiple still images so i could process each image<br>
+                        <img src="/assets/images/sc_1.png" height="300" width="300" ALIGN="left"> I found that this was the easyest part. Now i need to convert these pixels to ASCII, but there was i problem in this. The image needs to be grayscale.<br>
+                        <img src="/assets/images/sc_2.png" height="300" width="300" ALIGN="left">Now that i grayscaled the image i could create ASCII art from it and asign characters to these grayscale pixels. The only problem i needed to solve is to color the characters in the coresponding pixel color.<br>
+                        I couldnt find a fast solution that would render fast at the moment so i figured out a quick hack that worked. I converted the ASCII art to a html document and colorized with CSS and the took a screenshot of each html frame.<br>
+                        That FED up my resolution, but i scaled it down. Now all i had to do is to reassemble my animation from induvidual frames. <br>
+                        You can check out my source code <a href="https://github.com/mkAbele/gifmagic" target="_blank">here</a>.<br>
+                    </p><br><br><br>
+                    <h1>The art i came up with</h1>
+                    <div class="asset center-item">
+                        <img src="/assets/images/C1_A.gif" height="500" width="500" alt="#haydiroket from TOTALLY RAD">
+                        <p class="annotation">Frustate by Marks</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <script src="/dist/app.js"></script>
+    </body>
+</html>
