@@ -109,6 +109,8 @@ a{
     fill: yellowgreen;
 }
 
+
+
 .vm-tv-screen-effect{
     transform: translateZ(0);
     display: block !important;
@@ -389,6 +391,13 @@ img.border{
     border-bottom: 4px solid blue;
     border-right: 4px solid blue;
     box-shadow: 4px 4px 0px 0px greenyellow;
+}
+
+.asset.center-item{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 /*Small devices (landscape phones, 576px and up) */
