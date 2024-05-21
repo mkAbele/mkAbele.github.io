@@ -1,7 +1,7 @@
 margin = 0;
-marginSet = 100;
-canvasWidth = 3840;
-canvasHeight = 2160;
+marginSet = 15;
+canvasWidth = 1024;
+canvasHeight = 768;
 
 maxSteps = 10000;
 steps = 200;
@@ -99,7 +99,7 @@ function setup() {
 
   if(drawLive == false){
     for (let i = 0; i < lines.length; i++){
-      stroke(255,255,255,15);
+      stroke(255,255,255,12);
       line(lines[i][0], lines[i][1], lines[i][2], lines[i][3]);
     }
   }
