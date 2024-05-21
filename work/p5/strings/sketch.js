@@ -1,15 +1,15 @@
 margin = 0;
-marginSet = 5;
-canvasWidth = 1800;
-canvasHeight = 880;
+marginSet = 100;
+canvasWidth = 3840;
+canvasHeight = 2160;
 
-maxSteps = 200;
-steps = 250;
+maxSteps = 10000;
+steps = 200;
 i = 0;
 
-color1 = [215, 25, 32];
-color2 = [255, 229, 0];
-color3 = [35, 31, 32];
+drawLive = false;
+
+let bg, c1, c2, c3;
 defaultAlpha = 25;
 
 let lines = [];
@@ -84,44 +84,63 @@ function quickDraw(lines){
 actionSpacebar = false;
 
 function setup() {
-  canvasWidth = windowWidth;
-  canvasHeight = windowHeight;
+  bg = color(35, 31, 32);
+  c1 = color(215, 25, 32);
+  c2 = color(255, 229, 0);
+  c3 = color(35, 31, 32);
+
+
+  canvasWidth;// = windowWidth;
+  canvasHeight;// = windowHeight;
   createCanvas(canvasWidth, canvasHeight);
-  background(35, 31, 32);
+  background(bg);
 
   lines = generate(canvasWidth, canvasHeight, marginSet, steps, maxSteps);
-  console.log(lines.length);
+
+  if(drawLive == false){
+    for (let i = 0; i < lines.length; i++){
+      stroke(255,255,255,15);
+      line(lines[i][0], lines[i][1], lines[i][2], lines[i][3]);
+    }
+  }
+
   frameRate(30); 
   actionSpacebar = false;
 }
 
 function draw() {
-  actionSpacebar == false;
-  background(35, 31, 32);
-  fill(255,255,255)
-  
-
-  for (let i = 0; i < frameCount ; i++) {
-    stroke(255,255,255,100);
-    line(lines[i][0], lines[i][1], lines[i][2], lines[i][3]);
-  }
-
-  if (frameCount >= lines.length){
-    noLoop();
-  }
-
   if(actionSpacebar == true){
     saveCanvas('myCanvas', 'jpg');
-    
   }
 
-  text("Frame Count: " + frameCount, 25, 25);
+  actionSpacebar == false;
+
+  if(drawLive == false){
+    
+    background(bgColor);
+    fill(255,255,255)
+    
+
+    for (let i = 0; i < frameCount ; i++) {
+      stroke(255,255,255,10);
+      line(lines[i][0], lines[i][1], lines[i][2], lines[i][3]);
+    }
+
+    if (frameCount >= lines.length){
+      noLoop();
+    }
+  }
+
+  
+
+  // text("Frame Count: " + frameCount, 25, 25);
 
 }
 
 function keyPressed(){
   if (key == ' '){
     actionSpacebar = true;
+    saveCanvas('myCanvas', 'jpg');
   }
 }
 
