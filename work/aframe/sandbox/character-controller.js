@@ -84,19 +84,14 @@ AFRAME.registerComponent('character-controller', {
 });
 
 AFRAME.registerComponent('collider-check', {
+    dependencies: ['raycaster'],
     init: function () {
-        
-        this.el.addEventListener('collide', function(e) {
-            console.log('Player has collided with ', e.detail.body.el);
+        console.log(this.el)
+        this.el.addEventListener('raycaster-intersection', function(e) {
+            console.log('Player has collided with ', e.detail.body);
         });
         
         
-    },
-
-    tick: function(){
-        this.el.addEventListener('collide', function(e) {
-            console.log('Player has collided with ', e.detail.body.el);
-        });
     }
 
     
