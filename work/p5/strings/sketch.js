@@ -99,7 +99,7 @@ function setup() {
 
   if(drawLive == false){
     for (let i = 0; i < lines.length; i++){
-      stroke(255,255,255,12);
+      stroke(255,255,255,5);
       line(lines[i][0], lines[i][1], lines[i][2], lines[i][3]);
     }
   }
