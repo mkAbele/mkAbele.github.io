@@ -1,48 +1,106 @@
-let gridSize = 20;  // Size of the grid cells
-let x, y;  // Current position
-let diceRolls = [];
-let steps = 255;  // Number of steps to simulate
-let canvasSize = 400;
-let previousEven = null;  // Track the previous dice roll to check if it was even
-let movesCount = 0;  // Count of moves made
-let intersections = [];  // Array to store intersection points
+// Rule set:
+
+// 1.If the number thrown with the dice is even, draw the line diagonally upwards to the right; 
+// 'if the number is odd, draw it horizontally to the right.
+// 2.If the previous number was even and the next one is also even, draw the line diagonally upwards and to the left; 
+// if odd, draw it vertically upwards.
+
+
+let canvasSize = 800;
+let gridSize = 40;
+
+let startX = 0;
+let startY = canvasSize;
+
+let lines = []
+let sequence = 0;
+
+let diceRoll = 0;
+let diceRollHistory = [];
+
+let x1, y1;
 
 function setup() {
   createCanvas(canvasSize, canvasSize);
   background(255);
-  x = 0;
-  // y = height - gridSize;
-  y = height;
-  generateDiceRolls(steps);
-  drawGrid();
-  stroke(0);
-  strokeWeight(1);
-  noLoop();
+  //drawGrid();
 }
 
 function draw() {
-  for (let i = 0; i < diceRolls.length; i++) {
-    let currentRoll = diceRolls[i];
-    let nextRoll = diceRolls[(i + 1) % diceRolls.length];
-    drawLine(currentRoll, nextRoll);
-    if (movesCount >= 3 && intersects(x, y)) {
-      // If intersection detected after 3 moves, finish at intersection point
-      x = intersections[0].x;
-      y = intersections[0].y;
-      movesCount = 0;
-      intersections = [];
+  console.log("------------");
+  
+  //Set up
+  if(sequence == 0){
+    x1 = startX;
+    y1 = startY;
+  }
+
+  let x2 = x1;
+  let y2 = y1;
+
+  diceRoll = floor(random(1, 7));
+  console.log(diceRoll);
+
+  //Logic
+
+  if(isOdd(diceRoll)){
+    if(isOdd(diceRollHistory[diceRollHistory.length-1])){
+      console.log("Dice rolled odd again");
+      y2 -= gridSize;
+    }else{
+      console.log("Dice rolled odd");
+      x2 += gridSize;
     }
   }
-}
 
-function generateDiceRolls(num) {
-  for (let i = 0; i < num; i++) {
-    diceRolls.push(floor(random(1, 7)));  // Simulate a dice roll (1 to 6)
+  if(isEven(diceRoll)){
+    if(isEven(diceRollHistory[diceRollHistory.length-1])){
+      console.log("Dice rolled even again");
+      x2 -= gridSize;
+      y2 -= gridSize;
+
+    }else{
+      console.log("Dice rolled even");
+      x2 += gridSize;
+      y2 -= gridSize;
+    }
   }
+
+  
+
+  //Draw lines
+  stroke(0, 0, 0, 255);
+  strokeWeight(1);
+  line(x1, y1, x2, y2);
+
+
+  //Out
+  sequence++;
+  diceRollHistory.push(diceRoll);
+  x1 = x2;
+  y1 = y2;
+
+  if(x1 > width){
+    sequence = 0;
+  }
+
+  if(x1 < 0){
+    sequence = 0;
+  }
+
+  if(y1 > height){
+    sequence = 0;
+  }
+
+  if(y1 < 0){
+    sequence = 0;
+  }
+
+  frameRate(30);
 }
 
 function drawGrid() {
-  stroke(200);
+  stroke(0, 0, 0, 100);
   strokeWeight(1);
   for (let i = 0; i <= width; i += gridSize) {
     line(i, 0, i, height);
@@ -52,48 +110,10 @@ function drawGrid() {
   }
 }
 
-function drawLine(currentRoll, nextRoll) {
-  let newX = x;
-  let newY = y;
-
-  if (currentRoll % 2 === 0) {  // Even roll
-    newX += gridSize;
-    newY -= gridSize;
-  } else {  // Odd roll
-    newX += gridSize;
-  }
-
-  if (previousEven !== null && previousEven % 2 === 0 && nextRoll % 2 === 0) {
-    newX -= gridSize;
-    newY -= gridSize;
-  } else if (previousEven !== null && previousEven % 2 === 0 && nextRoll % 2 !== 0) {
-    newY -= gridSize;
-  }
-
-  // Boundary handling
-  newX = (newX + width) % width;
-  newY = (newY + height) % height;
-
-  line(x, y, newX, newY);
-
-  // Store intersection points
-  if (movesCount > 0 && intersects(newX, newY)) {
-    intersections.push({ x: newX, y: newY });
-  }
-
-  x = newX;
-  y = newY;
-  previousEven = currentRoll;
-  movesCount++;
+function isOdd(number) {
+  return number % 2 !== 0;
 }
 
-function intersects(newX, newY) {
-  // Check if the current position intersects with any previous position
-  for (let i = 0; i < intersections.length; i++) {
-    let intersection = intersections[i];
-    if (newX === intersection.x && newY === intersection.y) {
-      return true;
-    }
-  }
-  return false;
+function isEven(number) {
+  return number % 2 === 0;
 }

@@ -1,0 +1,8 @@
+// Rule set:
+
+// 1.If the number thrown with the dice is even, draw the line diagonally upwards to the right; 'if the number is odd, draw it horizontally to the right.
+// 2.If the previous number was even and the next one is also even, draw the line diagonally upwards and to the left; if odd, draw it vertically upwards.
+// 3.The thrown numbers determine the length of the lines.
+// 4.If the line goes beyond the field, it starts from the opposite border.
+// 5.If the line intersects after 3 moves, finish the move at the intersection point and start from point 0.
+// 6. The 0 point is the bottom left corner.
