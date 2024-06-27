@@ -16,10 +16,12 @@
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script> -->
 
     <script src="./character-controller.js"></script>
+    <script src="./custom-materials.js"></script>
 
   </head>
   <body>
-    <a-scene stats obb-collider="showColliders: true" vr-mode-ui="enabled: false" physics=" driver: ammo; debug: true; stats:panel;">
+    <a-scene stats vr-mode-ui="enabled: false" physics=" driver: ammo; stats:panel;">
+      <!-- <a-scene stats obb-collider="showColliders: true" vr-mode-ui="enabled: false" physics=" driver: ammo; debug: true; stats:panel;"></a-scene> -->
     <!-- <a-scene vr-mode-ui="enabled: false" physics=" driver: ammo;"> -->
 
         <a-assets>
@@ -31,47 +33,74 @@
             <!-- Loads debug buildings -->
             <a-asset-item id="dbgBuildings-obj" src="./assets/maps/met-newtown/buildings_mtnewtown_dbg.obj"></a-asset-item>
             <a-asset-item id="dbgBuildings-mtl" src="./assets/maps/met-newtown/buildings_mtnewtown_dbg.mtl"></a-asset-item>
+
+            <!-- Loads my house -->
+            <a-asset-item id="crib-obj" src="./assets/maps/met-newtown/crib.obj"></a-asset-item>
+            <a-asset-item id="crib-mtl" src="./assets/maps/met-newtown/crib.mtl"></a-asset-item>
+
+            <!-- Loads my stairs -->
+            <a-asset-item id="stairs-obj" src="./assets/maps/met-newtown/stairs.obj"></a-asset-item>
+            <a-asset-item id="stairs-mtl" src="./assets/maps/met-newtown/stairs.mtl"></a-asset-item>
+
+            <!-- Loads navmesh -->
+            <a-asset-item id="navmesh-obj" src="./assets/maps/met-newtown/Terrain_mtnewtown_dbg_nav.glb"></a-asset-item>
+            <!-- <a-asset-item id="navmesh-stairs-obj" src="./assets/maps/met-newtown/Terrain_mtnewtown_dbg_nav_stairs.glb"></a-asset-item> -->
         </a-assets>
 
+        <!-- Navmesh -->
+        <!-- <a-entity data-raycastable="" id="navmesh" class="navmesh" gltf-model="./assets/maps/met-newtown/Terrain_mtnewtown_dbg_nav.glb" position="0 -18 0" nav-mesh="" material="depthTest: false; depthWrite: false" visible="false"></a-entity> -->
+        <a-entity data-raycastable id="navmesh" class="navmesh" gltf-model="#navmesh-obj" position="0 -18 0" nav-mesh navmesh-material></a-entity>
+        <!-- <a-entity data-raycastable id="navmesh-stairs-obj" class="navmesh-stairs-obj" gltf-model="#navmesh-stairs-obj" position="0 -18 0" nav-mesh  ></a-entity> -->
+        <!-- navmesh-material -->
+
         <!-- Terrain -->
-        <a-entity data-raycastable ammo-body="type: static; mass: 0;" ammo-shape="type: mesh;" id="terrain" obj-model="obj: #terrain-obj; mtl: #terrain-mtl" position="0 -18 0"></a-entity>
+        <a-entity shadow="receive: true" data-raycastable ammo-body="type: static; mass: 0;" ammo-shape="type: mesh;" id="terrain" obj-model="obj: #terrain-obj; mtl: #terrain-mtl" position="0 -18 0"></a-entity>
 
         <!-- Buildings -->
-        <a-entity data-raycastable ammo-body="type: static; mass: 0;" ammo-shape="type: mesh;" id="debug-buildings" obj-model="obj: #dbgBuildings-obj; mtl: #dbgBuildings-mtl" position="0 -18 0"></a-entity>
+        <a-entity shadow="receive: true; cast:true;" data-raycastable ammo-body="type: static; mass: 0;" ammo-shape="type: mesh;" id="debug-buildings" obj-model="obj: #dbgBuildings-obj; mtl: #dbgBuildings-mtl" position="0 -18 0"></a-entity>
+
+        <a-entity shadow="receive: true; cast:true;" data-raycastable ammo-body="type: static; mass: 0;" ammo-shape="type: mesh;" id="crib" obj-model="obj: #crib-obj; mtl: #crib-mtl" position="0 -18 0"></a-entity>
+        <a-entity shadow="receive: true; cast:true;" data-raycastable ammo-body="type: static; mass: 0;" ammo-shape="type: mesh;" id="crib" obj-model="obj: #stairs-obj; mtl: #stairs-mtl" position="0 -18 0"></a-entity>
+
 
         <!-- Test objects -->
-        <a-box data-raycastable ammo-body ammo-shape="type: box;" position="605 2.5 -605" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-box shadow="receive: true; cast:true;" data-raycastable ammo-body ammo-shape="type: box;" position="605 2.5 -605" rotation="0 45 0" color="#4CC3D9"></a-box>
 
-        <a-box data-raycastable position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-        <a-sphere data-raycastable position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-        <a-cylinder data-raycastable ammo-body="type: static; mass: 0;" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-        <a-box data-raycastable ammo-body="type: static; mass: 0;" position="0 0 -4" rotation="-90 0 0" width="4" height="4" depth="0.1" color="#7BC8A4"></a-box>
-        <a-box data-raycastable ammo-body id="boxy" ammo-shape="type: box;" id="scaleObject" position="630 0.5 -595" color="#F0F0F0"></a-box>
+        <a-box shadow="receive: true; cast:true;" data-raycastable position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-sphere shadow="receive: true; cast:true;" data-raycastable position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-cylinder shadow="receive: true; cast:true;" data-raycastable ammo-body="type: static; mass: 0;" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-box shadow="receive: true; cast:true;" data-raycastable ammo-body="type: static; mass: 0;" position="0 0 -4" rotation="-90 0 0" width="4" height="4" depth="0.1" color="#7BC8A4"></a-box>
+        <a-box shadow="receive: true; cast:true;" data-raycastable ammo-body id="boxy" ammo-shape="type: box;" id="scaleObject" position="630 0.5 -595" color="#F0F0F0"></a-box>
 
         <!-- Sky box -->
         <!-- <a-sky id="#sky"></a-sky> -->
         <!-- <a-entity environment="playArea: 10;"><a-entity> -->
-        <a-entity environment="preset: arches" preset-switcher="" id="environment"></a-entity>
+        <a-entity environment="preset: arches; shadow:true;" preset-switcher="" id="environment"></a-entity>
 
         <!-- First-person camera with look-controls -->
         <!-- <a-entity id="cameraRig"  position="600 1.6 -600" rotation="0 -35 0" character-controller></a-entity> -->
         <!-- -->
-        <a-entity id="cameraRig" position="636.4 -2.3 -597.7" movement-controls character-controller>
-            <!-- Character model -->
+        <!-- <a-entity id="cameraRig" position="636.4 -2.3 -597.7" movement-controls character-controller>
+
             <a-entity id="character" position="0 0 0">
-                <!-- Add your character model here visible="false" obb-collider -->
                 <a-box id="fps-body" position="0 0.26 0" width="0.6" height="1.86" depth="0.6" color="blue" visible="false" ammo-body="type: kinematic; mass: 80;" ammo-shape="type: box;"></a-box>
                 <a-entity collider-check="" raycaster="objects: [data-raycastable]; direction: 0 -100 0; showLine: true; lineColor: red; far: 994.11" position="0 -0.68 0" line="end: 0 -1.2656118878091025 0; color: red"></a-entity>
               </a-entity>
-            <!-- Camera -->
+
             <a-entity id="camera" position="0 1.6 0" camera look-controls="pointerLockEnabled: true"></a-entity>
-        </a-entity>
+        </a-entity> -->
 
         <!-- <a-entity id="rig" movement-controls kinematic-body>
           <a-entity camera
               position="0 1.6 0"
               look-controls="pointerLockEnabled: true"></a-entity>
         </a-entity> -->
+
+        <a-entity id="rig" position="636.4 -2.3 -597.7" movement-controls="constrainToNavMesh: true">
+          <a-entity camera
+                    position="0 1.6 0"
+                    look-controls="pointerLockEnabled: true"></a-entity>
+        </a-entity>
 
 
     </a-scene>
