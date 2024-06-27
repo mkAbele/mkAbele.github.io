@@ -31,6 +31,7 @@ AFRAME.registerComponent('checker-material', {
             const material = new THREE.MeshPhongMaterial({
                 map: texture
             });
+            
             mesh.traverse(function (node) {
                 
                 console.log(node)
